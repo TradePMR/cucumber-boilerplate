@@ -19,7 +19,10 @@ import checkOffset from '../support/check/checkOffset';
 import checkProperty from '../support/check/checkProperty';
 import checkSelected from '../support/check/checkSelected';
 import checkTitle from '../support/check/checkTitle';
+import errorCheck from '../support/check/errorCheck';
 import checkURL from '../support/check/checkURL';
+import checkForError from '../support/check/checkForError';
+import checkForSubmit from '../support/check/checkForSubmit';
 import checkURLPath from '../support/check/checkURLPath';
 import checkWithinViewport from '../support/check/checkWithinViewport';
 import compareText from '../support/check/compareText';
@@ -31,6 +34,17 @@ import waitForVisible from '../support/action/waitForVisible';
 
 
 defineSupportCode(({ Then }) => {
+
+    Then(
+        /^I expect the submit button to be visible$/,
+      checkForSubmit
+    );
+
+    Then(
+        /^I expect an error "([^"]*)?"$/,
+      checkForError
+    );
+
     Then(
         /^I expect that the title is( not)* "([^"]*)?"$/,
         checkTitle
